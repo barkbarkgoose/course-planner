@@ -1,8 +1,14 @@
-from django.core.management.base import BaseCommand
-from django.core.management import call_command
+"""Management command to reset the database and load sample data."""
+
 import os
 
+from django.core.management.base import BaseCommand
+from django.core.management import call_command
+
 class Command(BaseCommand):
+    """
+    Resets the database and loads sample data.
+    """
     help = 'Resets the database and loads sample data'
 
     def handle(self, *args, **kwargs):
@@ -23,4 +29,4 @@ class Command(BaseCommand):
         call_command('loaddata', 'sample_data.json')
         self.stdout.write('Loaded sample data')
         
-        self.stdout.write(self.style.SUCCESS('Successfully reset database with sample data')) 
+        self.stdout.write('Successfully reset database with sample data') 

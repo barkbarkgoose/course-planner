@@ -1,3 +1,5 @@
+"""Views for the course planning application."""
+
 from django.shortcuts import render, get_object_or_404
 from .models import Course, Student, Enrollment
 
@@ -33,7 +35,7 @@ def course_detail(request, pk):
         Http404: If the course with the specified pk doesn't exist.
     """
     course = get_object_or_404(Course, pk=pk)
-    enrollments = Enrollment.objects.filter(course=course
+    enrollments = Enrollment.objects.filter(course=course)
                                             
     return render(request, 'courses/course_detail.html', {
         'course': course,
