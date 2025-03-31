@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Enrollments</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Semester</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enrollment in enrollments %}
+            <tr>
+                <td>
+                  <a href="{% url 'courses:student_detail' enrollment.student.pk %}">
+                    {{ enrollment.student.name }}
+                  </a>
+                </td>
+                <td>
+                  <a href="{% url 'courses:course_detail' enrollment.course.pk %}">
+                    {{ enrollment.course.code }} - {{ enrollment.course.name }}
+                  </a>
+                </td>
+                <td>
+                  {{ enrollment.get_semester_display }}
+                </td>
+                <td>
+                    <span class="badge bg-{% if enrollment.grade %}success{% else %}warning{% endif %}">
+                        {{ enrollment.grade|default:"In Progress" }}
+                    </span>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">
+                  No enrollments available.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %} 

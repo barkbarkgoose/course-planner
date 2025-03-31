@@ -1,0 +1,116 @@
+[
+    {
+        "model": "courses.course",
+        "pk": 1,
+        "fields": {
+            "name": "Introduction to Computer Science",
+            "code": "CS101",
+            "description": "Basic concepts of programming and computer science",
+            "credits": 3,
+            "semester_offered": "FALL"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 2,
+        "fields": {
+            "name": "Data Structures",
+            "code": "CS201",
+            "description": "Study of fundamental data structures and algorithms",
+            "credits": 4,
+            "semester_offered": "SPRING"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 3,
+        "fields": {
+            "name": "Database Systems",
+            "code": "CS301",
+            "description": "Design and implementation of database systems",
+            "credits": 3,
+            "semester_offered": "FALL"
+        }
+    },
+    {
+        "model": "courses.course",
+        "pk": 4,
+        "fields": {
+            "name": "Web Development",
+            "code": "CS401",
+            "description": "Modern web development practices and frameworks",
+            "credits": 3,
+            "semester_offered": "SPRING"
+        }
+    },
+    {
+        "model": "courses.student",
+        "pk": 1,
+        "fields": {
+            "name": "John Smith",
+            "email": "john.smith@example.com",
+            "major": "Computer Science",
+            "year": "FR"
+        }
+    },
+    {
+        "model": "courses.student",
+        "pk": 2,
+        "fields": {
+            "name": "Emma Wilson",
+            "email": "emma.wilson@example.com",
+            "major": "Computer Science",
+            "year": "SO"
+        }
+    },
+    {
+        "model": "courses.student",
+        "pk": 3,
+        "fields": {
+            "name": "Michael Brown",
+            "email": "michael.brown@example.com",
+            "major": "Computer Science",
+            "year": "JR"
+        }
+    },
+    {
+        "model": "courses.enrollment",
+        "pk": 1,
+        "fields": {
+            "student": 1,
+            "course": 1,
+            "semester": "FALL",
+            "grade": "A"
+        }
+    },
+    {
+        "model": "courses.enrollment",
+        "pk": 2,
+        "fields": {
+            "student": 2,
+            "course": 2,
+            "semester": "SPRING",
+            "grade": "B+"
+        }
+    },
+    {
+        "model": "courses.enrollment",
+        "pk": 3,
+        "fields": {
+            "student": 3,
+            "course": 3,
+            "semester": "FALL",
+            "grade": "A-"
+        }
+    },
+    {
+        "model": "courses.enrollment",
+        "pk": 4,
+        "fields": {
+            "student": 3,
+            "course": 4,
+            "semester": "SPRING",
+            "grade": null
+        }
+    }
+] 

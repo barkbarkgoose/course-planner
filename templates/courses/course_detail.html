@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>{{ course.code }} - {{ course.name }}</h1>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Course Details</h5>
+                <p><strong>Credits:</strong> {{ course.credits }}</p>
+                <p><strong>Semester Offered:</strong> {{ course.get_semester_offered_display }}</p>
+                <p><strong>Description:</strong></p>
+                <p>{{ course.description }}</p>
+                
+                {% if course.prerequisites.all %}
+                <h5 class="card-title mt-3">Prerequisites</h5>
+                <ul>
+                    {% for prereq in course.prerequisites.all %}
+                    <li><a href="{% url 'courses:course_detail' prereq.pk %}">{{ prereq.code }} - {{ prereq.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Enrolled Students</h5>
+                {% if enrollments %}
+                <ul class="list-group">
+                    {% for enrollment in enrollments %}
+                    <li class="list-group-item">
+                        <a href="{% url 'courses:student_detail' enrollment.student.pk %}">{{ enrollment.student.name }}</a>
+                        <span class="badge bg-{% if enrollment.grade %}success{% else %}warning{% endif %} float-end">
+                            {{ enrollment.grade|default:"In Progress" }}
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No students enrolled in this course.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
